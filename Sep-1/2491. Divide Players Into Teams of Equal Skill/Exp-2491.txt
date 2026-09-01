@@ -1,0 +1,18 @@
+LeetCode 2491 - Divide Players Into Teams of Equal Skill
+
+Approach:
+
+Sort the array.
+Pair the smallest-skilled player with the largest-skilled player.
+The required team skill is arr[0] + arr[n-1].
+Use two pointers, one from the beginning and one from the end.
+If every pair has the same total skill, add the product of the two players' skills.
+If any pair has a different total skill, return -1.
+
+Complexity:
+
+Time: O(n log n) - sorting
+Space: O(1) auxiliary space
+
+Key Takeaway:
+Sorting + two pointers allows us to efficiently form pairs with equal total skill.
