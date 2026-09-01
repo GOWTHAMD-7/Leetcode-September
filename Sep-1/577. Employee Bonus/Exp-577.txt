@@ -1,0 +1,16 @@
+LeetCode 577 - Employee Bonus
+
+Approach:
+
+Use a LEFT JOIN to include all employees, even those who don't have a bonus record.
+Select the employee name and bonus.
+Filter employees whose bonus is less than 1000.
+Include employees with no bonus using b.bonus IS NULL.
+
+Complexity:
+
+Time: O(n) average, depending on database indexing/join implementation.
+Space: O(n) depending on the execution plan.
+
+Key Takeaway:
+Use LEFT JOIN when you need to keep all records from the left table, and handle missing values using IS NULL.
