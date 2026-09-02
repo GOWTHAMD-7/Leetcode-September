@@ -1,0 +1,17 @@
+LeetCode 38 - Count and Say
+
+Approach:
+
+Start with base sequence "1" for n = 1.
+Iterate from 2 up to n, generating each sequence from the previous one using run-length encoding.
+Traverse the previous string, counting consecutive identical characters.
+When a different character is encountered (or at the end of the string), append the count followed by the character to a new StringBuilder.
+Update the current string with the newly generated sequence and repeat until the n-th term.
+
+Complexity:
+
+Time: O(m) where m is the total number of characters generated across all iterations up to n.
+Space: O(m) to store intermediate and final string representations.
+
+Key Takeaway:
+Simulating the run-length encoding step-by-step with StringBuilder allows efficient generation of consecutive terms.

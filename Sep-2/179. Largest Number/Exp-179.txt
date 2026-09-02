@@ -1,0 +1,17 @@
+LeetCode 179 - Largest Number
+
+Approach:
+
+Convert all integers in the array into their string representations.
+Sort the strings using a custom comparator: for two strings a and b, compare (b + a) with (a + b).
+If (b + a) is larger, b should come before a to form a larger concatenated number.
+Handle the edge case where the largest element is "0" (e.g., [0, 0]), returning "0" instead of multiple zeros.
+Concatenate the sorted strings using StringBuilder and return the final result.
+
+Complexity:
+
+Time: O(n log n * k) where n is the number of elements and k is the average length of the string representations.
+Space: O(n * k) to store string representations and the sorted array.
+
+Key Takeaway:
+Custom comparator ordering based on (b + a) vs (a + b) ensures greedy optimal concatenation without numerical overflow.
