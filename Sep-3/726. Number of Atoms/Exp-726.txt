@@ -1,0 +1,21 @@
+LeetCode 726 - Number of Atoms
+
+Approach:
+
+Use a stack of (atom, count) pairs to parse the chemical formula and handle nested parentheses.
+Iterate through the string character by character:
+- Uppercase letters mark the start of a new atom; push any preceding atom and its count to the stack.
+- Lowercase letters append to the current atom name.
+- Digits build the count for the current atom or group.
+- '(' pushes the current atom (if any) and an opening bracket marker to the stack.
+- ')' pushes the current atom (if any), parses the following group multiplier (default 1), pops atoms up to '(' multiplying their counts by the multiplier, and pushes them back onto the stack.
+After parsing, transfer all elements from the stack into a TreeMap to combine duplicate atoms and sort them lexicographically.
+Build and return the result string, appending counts only when they are greater than 1.
+
+Complexity:
+
+Time: O(n^2) in the worst case due to repeated popping/pushing within deeply nested parentheses, plus O(k log k) for TreeMap sorting where k is the number of unique atoms.
+Space: O(n) auxiliary space for the stack, list, and TreeMap.
+
+Key Takeaway:
+Using a stack to manage scopes alongside a TreeMap enables clean handling of nested multiplier expansions and automatic lexicographical ordering.
