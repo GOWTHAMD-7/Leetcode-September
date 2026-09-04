@@ -1,0 +1,19 @@
+LeetCode 450 - Delete Node in a BST
+
+Approach:
+
+Use a dummy node pointing to the root as its left child to handle deleting the root node without special cases.
+Traverse the tree recursively to find the parent node whose child matches the target key.
+When the target node is located, remove and restructure it according to its children:
+- If it has no children (leaf node), simply remove the reference by returning null.
+- If it has only one child (left or right), replace the target node with that existing child.
+- If it has two children, find its in-order successor (the leftmost node of the right subtree), detach it from its original spot, and replace the target node with this successor while preserving the left and right subtrees.
+Return the left child of the dummy node as the new root of the BST.
+
+Complexity:
+
+Time: O(h) where h is the height of the tree (O(log n) for balanced BST, O(n) worst case for skewed tree).
+Space: O(h) recursion stack space proportional to the height of the tree.
+
+Key Takeaway:
+Deleting a node with two children requires replacing it with its in-order successor (or predecessor) and rewiring tree pointers carefully to maintain BST properties.
