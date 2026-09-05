@@ -1,0 +1,18 @@
+LeetCode 784 - Letter Case Permutation
+
+Approach:
+
+Use recursion with backtracking to explore all possible letter-case configurations.
+Maintain a StringBuilder of the input string and traverse index by index:
+- If the current character is a digit (ASCII < 60), leave it unchanged and recurse to the next index.
+- If it is an uppercase letter, branch with the unchanged character, then mutate it to lowercase (+32) and branch again, restoring it afterwards.
+- If it is a lowercase letter, branch with the unchanged character, then mutate it to uppercase (-32) and branch again, restoring it afterwards.
+When the current position reaches the end of the string, convert the StringBuilder to a String and add it to the result list.
+
+Complexity:
+
+Time: O(2^L * n) where L is the number of letters in the string and n is the string length.
+Space: O(n) recursion stack depth (excluding the output list).
+
+Key Takeaway:
+In-place character modification using StringBuilder and backtracking efficiently explores all case combinations without redundant string creation.

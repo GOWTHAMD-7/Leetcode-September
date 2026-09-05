@@ -1,0 +1,17 @@
+LeetCode 3904 - Smallest Stable Index II
+
+Approach:
+
+Precompute suffix minimums in an auxiliary array arr from right to left, where arr[i] stores the minimum value from index i to len - 1.
+Traverse the array from left to right while dynamically tracking the prefix maximum max up to index i.
+At each index i, evaluate whether max - arr[i] <= k.
+Return the first index i that satisfies the condition (guaranteeing the smallest stable index).
+If no valid index satisfies the condition after scanning all elements, return -1.
+
+Complexity:
+
+Time: O(n) with one backward pass to compute suffix minimums and one forward pass to check the condition.
+Space: O(n) auxiliary space to store suffix minimum values.
+
+Key Takeaway:
+Combining running prefix maximum with precomputed suffix minimum enables verifying range constraints at each index in O(1) time.
