@@ -1,0 +1,26 @@
+LeetCode Q4 - Minimum Cost Path With At Most K Turns
+
+Approach:
+
+Model the problem as finding the shortest path on a state graph using Dijkstra's Algorithm with a PriorityQueue.
+Represent each state as (row, col, dir, turn, sum):
+- dir tracks movement direction: 1 = UP, 2 = DOWN, 3 = LEFT, 4 = RIGHT.
+- turn tracks the number of direction changes made so far (bounded by k).
+- sum tracks accumulated path cost.
+Initialize a 4D distance array dp[m][n][5][k + 1] with Integer.MAX_VALUE.
+Handle the base case for m == 1 && n == 1 returning grid[0][0].
+Seed the PriorityQueue from (0, 0) with initial valid transitions: moving right to (0, 1) and down to (1, 0) with 0 turns.
+In the Dijkstra loop:
+- Extract the state with the minimum accumulated sum.
+- Skip stale queue entries if p.sum != dp[p.row][p.col][p.dir][p.turn].
+- If reaching the destination (m - 1, n - 1), return p.sum immediately.
+- Explore 4 directional moves: increment turn count if d != p.dir, prune if nt > k, and relax edge if nsum < dp[nr][nc][d][nt].
+Return -1 if (m - 1, n - 1) is unreachable within k turns.
+
+Complexity:
+
+Time: O(m * n * k * log(m * n * k)) where V = O(m * n * k) states and each state has at most 4 transitions.
+Space: O(m * n * k) to store the 4D DP table and priority queue entries.
+
+Key Takeaway:
+Expanding Dijkstra's algorithm over an augmented state space (cell position, heading direction, turn budget) guarantees the optimal minimum cost path in polynomial time.

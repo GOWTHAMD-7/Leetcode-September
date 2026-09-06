@@ -1,0 +1,20 @@
+LeetCode Q2 - Count Good Cyclic Rotations
+
+Approach:
+
+Compute the initial sum of the first half (fst) and second half (sec) of the array.
+Iterate through rotations using a two-pointer sliding window:
+- If the sum of the first half differs from the sum of the second half (fst != sec), increment the answer count.
+- Update the sums for the next cyclic shift in O(1) time:
+  - Remove arr[i] from fst and add arr[j] to fst.
+  - Remove arr[j] from sec and add arr[i] to sec.
+  - Advance pointers i and j.
+Return the total count of good rotations.
+
+Complexity:
+
+Time: O(n) where n is the array length, performing linear prefix sums and O(1) sliding window updates per rotation.
+Space: O(1) auxiliary space using only scalar variables.
+
+Key Takeaway:
+A sliding window allows updating two-half partition sums in O(1) per rotation instead of recalculating sums from scratch.

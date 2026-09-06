@@ -1,0 +1,17 @@
+LeetCode Q1 - Count Rotations With Exactly K Equal Adjacent Pairs
+
+Approach:
+
+Iterate through every starting index i from 0 to len - 1 to simulate each cyclic rotation of string s.
+Construct the rotated string of length len using modulo indexing (j % len) with a StringBuilder.
+Count the number of adjacent character pairs that are identical (sb.charAt(j) == sb.charAt(j - 1)).
+If the count of equal adjacent pairs equals k, increment the answer.
+Return the total count of valid rotations.
+
+Complexity:
+
+Time: O(n^2) where n is the length of string s, generating and checking n rotations of length n.
+Space: O(n) auxiliary space to construct each rotated string.
+
+Key Takeaway:
+Simulating all n rotations directly using modular arithmetic allows straightforward validation of adjacent character criteria.

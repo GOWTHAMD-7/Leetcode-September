@@ -1,0 +1,20 @@
+LeetCode Q3 - Count Robot Groups
+
+Approach:
+
+Group robots based on proximity constraint:
+- Traverse through the robots and check if the distance between the current robot and the previous one is <= dist.
+- If within dist, merge by replacing the previous robot with the current boundary robot.
+- Otherwise, add the new robot as a separate entity into the lists.
+Scan the reduced group from right to left to count distinct fleets based on speed:
+- Start with 1 group for the rightmost robot.
+- If a robot to the left has a speed <= the current trailing speed, it cannot overtake or merge with the fleet ahead, forming a new group.
+- Update the bottleneck speed accordingly and return the total count of groups.
+
+Complexity:
+
+Time: O(n) where n is the number of robots, performing one forward pass to condense proximity groups and one backward pass to count fleets.
+Space: O(n) auxiliary space to store condensed positions and speeds.
+
+Key Takeaway:
+Proximity grouping followed by a backward scan on speeds simplifies dynamic fleet interactions into a linear-time evaluation.
