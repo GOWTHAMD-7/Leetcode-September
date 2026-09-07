@@ -1,0 +1,16 @@
+LeetCode 349 - Intersection of Two Arrays
+
+Approach:
+
+Insert all elements of nums1 into a HashSet (set) to eliminate duplicates and enable O(1) average lookup time.
+Iterate through nums2 and check if each element is present in set:
+- If present, insert it into a second HashSet (ret) to guarantee that common elements are recorded uniquely.
+Convert the elements of the result set into an integer array and return it.
+
+Complexity:
+
+Time: O(n + m) where n = nums1.length and m = nums2.length, using O(1) average hash set operations.
+Space: O(n + min(n, m)) auxiliary space to store elements of nums1 and the resulting intersection set.
+
+Key Takeaway:
+Hash sets provide automatic deduplication and O(1) average membership tests to find common unique elements in linear time.

@@ -1,0 +1,21 @@
+LeetCode 394 - Decode String
+
+Approach:
+
+Use a stack of characters to process the string from left to right.
+Push characters onto the stack until encountering a closing bracket ']'.
+When ']' is reached:
+- Pop characters until '[' is encountered to extract the encoded substring (reversed).
+- Pop the opening bracket '['.
+- Pop consecutive digit characters to determine the repeat count multiplier.
+- Reverse both the substring and count, then repeat the substring count times.
+- Push the resulting expanded characters back onto the stack to support outer nested expansions.
+After traversing the input string, pop all characters from the stack and reverse the sequence to form the final decoded string.
+
+Complexity:
+
+Time: O(maxK * n) where n is the length of the string and maxK is the maximum numerical multiplier.
+Space: O(m) where m is the total length of the decoded string stored in the stack and intermediate string builders.
+
+Key Takeaway:
+A character stack naturally processes nested bracketed groups from inside out, correctly handling arbitrary nesting levels.
