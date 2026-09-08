@@ -1,0 +1,22 @@
+LeetCode 2182 - Construct String With Repeat Limit
+
+Approach:
+
+Count frequencies of each character in s using a hash map.
+Insert all characters along with their counts into a max-heap (PriorityQueue) ordered descending by character value to prioritize lexicographically largest characters.
+Greedily extract the largest character from the heap:
+- Append up to lmt instances of the character to the result string.
+- If additional count remains, retain the character for subsequent placement.
+Continuously poll characters from the heap:
+- If the current character matches the previously appended character, a separator is needed: poll the second largest available character, append one instance of it, and reinsert both characters back into the heap with updated counts.
+- If no separator character exists in the heap, terminate the process.
+- If the current character is different from the previous character, append up to lmt instances, decrement count, and reinsert if remaining.
+Return the constructed repeat-limited string.
+
+Complexity:
+
+Time: O(n log k) where n is the length of the string s and k is the number of distinct characters (k <= 26, making heap operations effectively O(1)).
+Space: O(k) auxiliary space for the frequency map and priority queue, plus O(n) for the output string builder.
+
+Key Takeaway:
+Greedy selection via a max-heap ensures the lexicographically largest arrangement, using a single occurrence of the next-largest character as a separator when consecutive repeat limits are reached.

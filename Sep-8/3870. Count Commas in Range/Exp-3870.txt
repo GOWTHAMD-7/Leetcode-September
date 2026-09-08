@@ -1,0 +1,17 @@
+LeetCode 3870 - Count Commas in Range
+
+Approach:
+
+Standard number formatting introduces commas at thousands intervals (starting from 1,000):
+- Numbers in the range [1, 999] contain 0 commas.
+- Numbers in the range [1,000, 999,999] contain 1 comma each.
+If n <= 999, no numbers contain commas, so return 0.
+If n > 999, every number from 1,000 to n contributes exactly 1 comma, resulting in (n - 999) total commas.
+
+Complexity:
+
+Time: O(1) constant time arithmetic check.
+Space: O(1) auxiliary space.
+
+Key Takeaway:
+Commas are added at fixed digit thresholds; for values up to 999,999, counting commas reduces to counting how many numbers exceed the three-digit threshold (999).
