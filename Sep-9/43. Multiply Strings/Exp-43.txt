@@ -1,0 +1,19 @@
+LeetCode 43 - Multiply Strings
+
+Approach:
+
+Handle base edge case: if either number is "0", return "0".
+Simulate manual grade-school multiplication:
+- Multiply each digit of num2 with all digits of num1 from right to left.
+- Append trailing zeros based on positional weight (shift count k).
+- Store each intermediate partial product (in reverse order) into a list of StringBuilders.
+Sum the intermediate partial products column-by-column across all list entries, carrying over values to the next column.
+Reverse the final accumulated digits and strip any redundant leading zero before returning the result string.
+
+Complexity:
+
+Time: O(len1 * len2) where len1 and len2 are lengths of num1 and num2, performing digit-by-digit multiplications and column-wise additions.
+Space: O(len1 * len2) to store the list of intermediate partial products and output string buffer.
+
+Key Takeaway:
+Digit-by-digit simulation with positional shifts and carry propagation computes arbitrary-precision multiplication without integer overflow.

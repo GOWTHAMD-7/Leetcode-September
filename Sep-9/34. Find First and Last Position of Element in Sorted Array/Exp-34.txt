@@ -1,0 +1,18 @@
+LeetCode 34 - Find First and Last Position of Element in Sorted Array
+
+Approach:
+
+Use initial binary search to find any occurrence index (mid) where nums[mid] == tar.
+If tar is not found in the array, return [-1, -1].
+Once a match is found at index mid, perform two targeted binary searches:
+- start: search range [0, mid] to locate the first occurrence boundary where nums[mid] < tar && nums[mid + 1] == tar (or defaults to index 0).
+- end: search range [mid, len - 1] to locate the last occurrence boundary where nums[mid] > tar && nums[mid - 1] == tar (or defaults to index len - 1).
+Combine the boundary positions into the result array [start, end].
+
+Complexity:
+
+Time: O(log n) where n is the length of nums, as each phase performs binary search halving the search space.
+Space: O(1) auxiliary space using constant extra variables.
+
+Key Takeaway:
+Combining an initial binary search with boundary-refining binary searches locates contiguous range limits in logarithmic time.
