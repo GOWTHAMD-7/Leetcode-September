@@ -1,0 +1,17 @@
+LeetCode 114 - Flatten Binary Tree to Linked List
+
+Approach:
+
+Perform a pre-order traversal (DFS) on the binary tree, adding each visited node to a Queue.
+After all nodes are enqueued in pre-order:
+- Discard the root from the queue head since it is already the starting reference.
+- Iterate through the queue, setting each node's left child to null and wiring its right child to the next node polled from the queue.
+- Advance along the right chain until all nodes are linked as a singly-linked list in-place.
+
+Complexity:
+
+Time: O(n) where n is the number of nodes, requiring one pre-order traversal pass and one pointer-rewiring pass.
+Space: O(n) auxiliary space to store all node references in the Queue alongside recursion stack depth.
+
+Key Takeaway:
+Buffering nodes in pre-order traversal order eliminates pointer overwriting conflicts when restructuring tree edges into a right-skewed linked list.

@@ -1,0 +1,19 @@
+LeetCode 2265 - Count Nodes Equal to Average of Subtree
+
+Approach:
+
+Perform a bottom-up post-order traversal using a recursive helper function avg.
+For each node, return a 2-element array [subtreeSum, nodeCount]:
+- Initialize with the current node's value and count of 1: [root.val, 1].
+- Recursively visit left and right subtrees (if present) and accumulate their sums and counts into the current node's totals.
+- Compute the integer average of the subtree (subtreeSum / nodeCount).
+- If the subtree average equals root.val, increment the answer counter ret[0].
+Return the aggregated [subtreeSum, nodeCount] to parent nodes.
+
+Complexity:
+
+Time: O(n) where n is the number of nodes, visiting each node exactly once in post-order.
+Space: O(h) where h is the tree height, representing the recursion stack depth (O(log n) balanced, O(n) worst-case skewed).
+
+Key Takeaway:
+Post-order traversal collects subtree sum and size bottom-up, enabling subtree average validation in O(1) time per node.
