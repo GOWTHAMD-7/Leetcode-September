@@ -1,0 +1,19 @@
+LeetCode 3483 - Unique 3-Digit Even Numbers
+
+Approach:
+
+Count frequencies of all digits [0-9] in an array arr of size 10.
+Use a 3-stage backtracking search (ones -> twos -> threes) to form unique 3-digit numbers:
+- Early pruning: if no even digits (0, 2, 4, 6, 8) remain in arr, immediately return since an even number cannot be terminated.
+- Hundreds position (ones): pick a digit from 1 to 9 (avoiding leading zero).
+- Tens position (twos): pick a digit from 0 to 9.
+- Units position (threes): pick an available even digit from {0, 2, 4, 6, 8} and increment ret.
+Restore digit counts during backtracking to allow other branches to explore.
+
+Complexity:
+
+Time: O(n + 9 * 10 * 5) = O(n) where n is dig.length, bounding backtracking exploration to at most 450 constant-time checks.
+Space: O(1) auxiliary space using a fixed size-10 frequency array.
+
+Key Takeaway:
+Iterating over digit values (0-9) rather than array indices guarantees unique number generation without requiring set-based deduplication.

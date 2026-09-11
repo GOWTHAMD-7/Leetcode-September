@@ -1,0 +1,18 @@
+LeetCode 4034 - Minimum Bishop Moves to Reach Target
+
+Approach:
+
+Determine the square color (black or white) of start s and target t using parity check:
+- A square (a, b) is black if both coordinates have identical parity (both even or both odd), otherwise white.
+If s and t are on different colored squares, return -1 since a bishop can never change square colors.
+If s and t share the same color:
+- Trace all 4 diagonal rays from s to check if t lies along any of them. If found, return 1 move.
+- If not diagonally aligned, return 2 moves, as any square of the same color on a chessboard is reachable in at most 2 moves.
+
+Complexity:
+
+Time: O(1) since board dimensions are fixed (8x8) and diagonal exploration takes at most 8 steps.
+Space: O(1) auxiliary space.
+
+Key Takeaway:
+Bishops are color-bound: targets of different colors are unreachable (-1), while targets of matching colors require 1 move if aligned diagonally, and 2 moves otherwise.

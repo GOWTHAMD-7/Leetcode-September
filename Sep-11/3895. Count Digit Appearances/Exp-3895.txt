@@ -1,0 +1,18 @@
+LeetCode 3895 - Count Digit Appearances
+
+Approach:
+
+Iterate through every integer in the array nums.
+For each number, extract digits one by one using modulo and division:
+- Compute temp = t % 10 to extract the last digit.
+- If temp matches the target digit, increment the counter ret.
+- Divide the number by 10 (t = t / 10) and repeat until all digits are checked.
+Return the total count ret.
+
+Complexity:
+
+Time: O(n * d) where n is nums.length and d is the maximum number of digits in any element (at most 10 for standard 32-bit integers).
+Space: O(1) auxiliary space using scalar counters.
+
+Key Takeaway:
+Digit isolation using modulo 10 and integer division inspects digits sequentially in O(log10(num)) time without string conversion overhead.
