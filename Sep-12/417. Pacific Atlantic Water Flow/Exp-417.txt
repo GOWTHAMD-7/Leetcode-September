@@ -1,0 +1,17 @@
+LeetCode 417 - Pacific Atlantic Water Flow
+
+Approach:
+
+Invert the flow direction: start DFS from the ocean boundaries and search uphill to cells of equal or higher elevation.
+Use a status grid pac to record reachability:
+- Pass 1 (Pacific Ocean): Initiate DFS from top row and left column, marking reachable cells with 1.
+- Pass 2 (Atlantic Ocean): Initiate DFS from bottom row and right column, marking newly reachable cells with 2 and cells previously reachable by Pacific with 3.
+Iterate through the grid and collect all coordinates [i, j] where pac[i][j] == 3 (reachable from both oceans).
+
+Complexity:
+
+Time: O(m * n) where m and n are matrix dimensions, since each cell is visited a constant number of times across both DFS passes.
+Space: O(m * n) auxiliary space for the status matrix and recursion call stack.
+
+Key Takeaway:
+Searching backwards (uphill) from boundary ocean cells avoids redundant paths and reduces an O((m*n)^2) search to linear time in grid size.

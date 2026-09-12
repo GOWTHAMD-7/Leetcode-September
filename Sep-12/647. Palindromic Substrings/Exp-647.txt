@@ -1,0 +1,17 @@
+LeetCode 647 - Palindromic Substrings
+
+Approach:
+
+Enumerate all possible substrings of s using two nested loops: starting index i from 0 to len - 1 and ending index j from i + 1 to len.
+For each generated substring:
+- Check whether it is a palindrome using a two-pointer helper method isPal that compares symmetric characters from both ends moving inward.
+- If symmetric characters match throughout, increment the palindrome counter ret.
+Return the total count ret.
+
+Complexity:
+
+Time: O(n^3) where n is the length of string s, generating O(n^2) substrings with an O(n) palindrome validation per substring.
+Space: O(n) space allocated for intermediate substring objects.
+
+Key Takeaway:
+Exhaustive substring generation with two-pointer palindrome validation provides a straightforward, intuitive brute-force approach.

@@ -1,0 +1,18 @@
+LeetCode 3847 - Find the Score Difference in a Game
+
+Approach:
+
+Simulate the game round-by-round maintaining the scores of players A and B alongside an active player flag isA (initially true).
+For each index i:
+- If (i + 1) % 6 == 0 (every 6th round), toggle the active player.
+- If arr[i] is odd (arr[i] % 2 == 1), toggle the active player.
+- Allocate arr[i] points to the currently active player (to a if isA is true, else to b).
+Return the final score difference (a - b).
+
+Complexity:
+
+Time: O(n) where n is the length of arr, requiring a single linear pass.
+Space: O(1) auxiliary space using scalar accumulators and a boolean flag.
+
+Key Takeaway:
+Simulating state transitions directly with boolean toggles enables clean and efficient tracking of dynamic player turns.
