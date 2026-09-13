@@ -1,0 +1,17 @@
+LeetCode 648 - Replace Words
+
+Approach:
+
+Split the input sentence sen into an array of words arr using space as a delimiter.
+For each dictionary root s:
+- Compare prefix of length s.length() against each word in arr.
+- If the prefix matches, replace the word in arr with root s.
+Recombine all modified words using StringBuilder with space separators and return the resulting sentence.
+
+Complexity:
+
+Time: O(d * w * L) where d is dict.size(), w is the word count in sen, and L is the length of dictionary root string.
+Space: O(w * m) auxiliary space to store split words and intermediate string representations.
+
+Key Takeaway:
+Iterating through dictionary roots and matching prefixes against sentence words replaces derivatives with corresponding roots in-place.

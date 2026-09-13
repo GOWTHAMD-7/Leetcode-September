@@ -1,0 +1,17 @@
+LeetCode 575 - Distribute Candies
+
+Approach:
+
+Insert all candy types into a HashSet to count the total number of unique candy types (s).
+The maximum number of unique candies Alice can receive is constrained by:
+- The total distinct types available (s).
+- The maximum candy allowance she can eat (candy.length / 2).
+Return Math.min(s, candy.length / 2).
+
+Complexity:
+
+Time: O(n) where n is candy.length, scanning the array once to insert into the HashSet.
+Space: O(n) auxiliary space to store unique candy types in the set.
+
+Key Takeaway:
+Greedy selection of one of each candy type up to the eating quota (n / 2) maximizes candy variety.

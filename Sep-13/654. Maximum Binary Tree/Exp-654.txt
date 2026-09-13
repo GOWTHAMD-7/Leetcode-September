@@ -1,0 +1,18 @@
+LeetCode 654 - Maximum Binary Tree
+
+Approach:
+
+Use a recursive divide-and-conquer strategy to construct the tree:
+- In the range [start, end - 1], find the maximum value and its index pos.
+- Assign the maximum value to the current root node.
+- Recursively build the left child using elements in [start, pos - 1].
+- Recursively build the right child using elements in [pos + 1, end - 1].
+Return the constructed binary tree root.
+
+Complexity:
+
+Time: O(n^2) worst-case (for sorted or reverse-sorted input forming skewed trees), O(n log n) average.
+Space: O(n) worst-case recursion stack space (O(log n) average for balanced trees).
+
+Key Takeaway:
+Recursively identifying the subarray maximum to form the parent node while recursively partitioning subarrays builds the Cartesian tree.
