@@ -1,0 +1,19 @@
+LeetCode 392 - Is Subsequence
+
+Approach:
+
+Initialize two pointers: i tracking progress in string s and j scanning string t.
+Iterate through t while both pointers are within bounds:
+- If s.charAt(i) matches t.charAt(j), increment i to search for the next required character in s.
+- Always increment j to continue scanning through t.
+After traversal, check if i == s.length():
+- If true, all characters of s appeared in t in order (valid subsequence).
+- Otherwise, return false.
+
+Complexity:
+
+Time: O(len2) where len2 is the length of t, as each character of t is checked at most once.
+Space: O(1) auxiliary space using two integer pointers.
+
+Key Takeaway:
+A greedy two-pointer scan matches subsequence characters against the target string in linear time.

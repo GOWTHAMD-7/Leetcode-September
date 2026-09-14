@@ -1,0 +1,18 @@
+LeetCode 292 - Nim Game
+
+Approach:
+
+Analyze game states based on the maximum removable stones (1 to 3):
+- For n in {1, 2, 3}, the first player wins immediately by taking all stones.
+- For n = 4, the first player must leave 1, 2, or 3 stones, allowing the second player to take the rest and win.
+- In general, any multiple of 4 is a losing position for the current turn: whichever number of stones k (1 <= k <= 3) is removed, the opponent can take 4 - k stones to maintain a multiple of 4.
+- If n is not a multiple of 4, the first player can take n % 4 stones on the first move, forcing the opponent into a losing multiple-of-4 state.
+Return n % 4 != 0.
+
+Complexity:
+
+Time: O(1) using a single modulo arithmetic operation.
+Space: O(1) auxiliary space.
+
+Key Takeaway:
+Game theory reduction shows the first player wins if and only if the starting count is not divisible by (max_moves + 1) = 4.
