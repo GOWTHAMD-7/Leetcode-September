@@ -1,0 +1,20 @@
+LeetCode 429 - N-ary Tree Level Order Traversal
+
+Approach:
+
+Perform breadth-first search (BFS) using a Queue to traverse the N-ary tree level-by-level.
+Store elements as Pair(lvl, node) in the queue, starting with the root at level 1.
+While processing the queue:
+- Extract the head pair (lvl, node).
+- If the result list does not yet have a sublist for lvl, add a new empty list.
+- Append node.val to the corresponding level list (ret.get(lvl - 1)).
+- Enqueue all child nodes of node with incremented level (lvl + 1).
+Return the collected level-ordered list of lists.
+
+Complexity:
+
+Time: O(n) where n is the total number of nodes in the N-ary tree, visiting each node and edge once.
+Space: O(n) to store node references in the BFS queue and intermediate result structures.
+
+Key Takeaway:
+Tracking depth explicitly within queue elements cleanly groups nodes by level during standard BFS traversal.

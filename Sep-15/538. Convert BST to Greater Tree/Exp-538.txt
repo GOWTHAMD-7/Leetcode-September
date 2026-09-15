@@ -1,0 +1,20 @@
+LeetCode 538 - Convert BST to Greater Tree
+
+Approach:
+
+Perform a reverse in-order traversal (Right -> Root -> Left) using recursive helper bst(root, prev).
+In a BST, all nodes with greater keys are located in the right subtree or ancestor branches:
+- Pass down prev representing the sum of all greater nodes encountered so far.
+- Recursively visit the right subtree first, accumulating its original subtree sum.
+- Update root.val by adding the sum of all greater nodes (right + prev).
+- Recursively visit the left subtree, propagating the new running sum (original root val + prev + right).
+- Return the total sum of original node values in the current subtree to parent recursive calls.
+Return the root of the modified tree.
+
+Complexity:
+
+Time: O(n) where n is the number of nodes in the BST, visiting each node exactly once.
+Space: O(h) where h is the tree height, for the recursive call stack (O(log n) balanced, O(n) skewed).
+
+Key Takeaway:
+Reverse in-order traversal traverses nodes in strictly descending order, allowing a running sum to update each BST node to its greater tree value in a single pass.

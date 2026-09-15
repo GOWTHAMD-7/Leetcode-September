@@ -1,0 +1,21 @@
+LeetCode 877 - Stone Game
+
+Approach:
+
+Analyze parity of pile positions and game constraints:
+- The total number of piles is even (len % 2 == 0), and total sum of stones is odd (no ties possible).
+- The piles can be partitioned into two sets: even-indexed piles and odd-indexed piles.
+- The first player (Alex) can choose to take either all even-indexed piles or all odd-indexed piles:
+  - If Alex picks the first pile (even index), Bob must choose between two odd-indexed piles.
+  - On the next turn, Alex can pick another even-indexed pile, maintaining control over the parity choice throughout the entire game.
+- Because the total stone count is odd, the sum of even piles cannot equal the sum of odd piles.
+- Alex simply chooses the set with the strictly larger sum, guaranteeing victory every time.
+Return true.
+
+Complexity:
+
+Time: O(1) mathematical deduction.
+Space: O(1) auxiliary space.
+
+Key Takeaway:
+With an even number of piles and an odd total sum, the first player can always force taking all even or all odd positions to guarantee a win.
