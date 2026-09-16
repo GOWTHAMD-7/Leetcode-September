@@ -1,0 +1,20 @@
+LeetCode 3093 - Longest Common Suffix Queries
+
+Approach:
+
+Model the suffix matching problem by inserting words into a Trie in reverse order (from end to start).
+At each Trie node:
+- Maintain pos (index of the best candidate word) and len (its length).
+- When inserting a word from cont, update the node's stored pos and len whenever the current word is strictly shorter than the previously cached word.
+Precompute the fallback index p corresponding to the overall shortest string in cont (to use when no suffix match exists).
+For each query string:
+- Traverse the Trie backwards from the last character as deep as matching characters exist.
+- Return the cached pos from the deepest reached node, or fallback p if not even the last character matches.
+
+Complexity:
+
+Time: O(Σ |cont[i]| + Σ |query[j]|) for inserting container words and querying strings in reverse.
+Space: O(Σ |cont[i]|) auxiliary space for Trie nodes and child hash maps.
+
+Key Takeaway:
+Reversing strings and caching the shortest candidate index at each Trie node enables answering longest common suffix queries in time proportional to query length.

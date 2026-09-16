@@ -1,0 +1,20 @@
+LeetCode 1493 - Longest Subarray of 1's After Deleting One Element
+
+Approach:
+
+Compress the binary array using run-length encoding into a list of signed integers:
+- Positive integers represent the lengths of consecutive 1s.
+- Negative integers represent the counts of consecutive 0s (as -count).
+Handle the special case where the array contains exclusively 1s (lst.size() == 1 and positive): we must delete one element, so return count - 1.
+Scan through the compressed segments:
+- Consider any standalone block of 1s (max = max(max, block)).
+- Whenever a single zero (-1) separates two positive runs (prev > 0 and next > 0), simulate deleting that zero to merge them: max = max(max, prev + next).
+Return the maximum subarray length found (or 0 if no 1s exist).
+
+Complexity:
+
+Time: O(n) where n is nums.length, requiring one pass to encode runs and one pass to find the maximal combination.
+Space: O(n) auxiliary space to store run-length segments in the list.
+
+Key Takeaway:
+Run-length compression simplifies the problem to finding either the largest single 1s block or merging two 1s blocks separated by an isolated single zero.
