@@ -1,0 +1,18 @@
+LeetCode 559 - Maximum Depth of N-ary Tree
+
+Approach:
+
+Handle edge case: if root == null, the depth is 0.
+Traverse the N-ary tree using depth-first search (DFS) with a recursive helper max(root, ret, pos):
+- pos represents the 1-indexed depth of the current node.
+- Update global maximum depth ret[0] = Math.max(ret[0], pos).
+- Iterate through root.children, recursing on each child with incremented depth pos + 1.
+Return ret[0] containing the maximum depth reached.
+
+Complexity:
+
+Time: O(n) where n is the total number of nodes in the N-ary tree, visiting each node exactly once.
+Space: O(h) where h is the maximum height of the tree, representing the call stack depth.
+
+Key Takeaway:
+Recursive DFS propagating path depth down to leaf nodes tracks the maximum height of an arbitrary N-ary tree cleanly.

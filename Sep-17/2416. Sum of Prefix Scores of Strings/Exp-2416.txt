@@ -1,0 +1,19 @@
+LeetCode 2416 - Sum of Prefix Scores of Strings
+
+Approach:
+
+Build a Trie where each node stores a counter cnt indicating how many words share the prefix ending at that node.
+Insert each word into the Trie:
+- Traverse character by character.
+- Create new Trie nodes when encountering unvisited edges and increment cnt at each visited node.
+Calculate prefix scores for each word:
+- Traverse the Trie along the characters of each word, accumulating cnt from each prefix node along the path.
+Return the resulting array of prefix score sums.
+
+Complexity:
+
+Time: O(Σ |words[i]|) to insert all words into the Trie and subsequently sum up the prefix scores.
+Space: O(Σ |words[i]| * 26) auxiliary space for the Trie nodes and child pointers.
+
+Key Takeaway:
+Incrementing node visit counts in a Trie transforms prefix score queries into simple path-sum traversals in O(length) time.

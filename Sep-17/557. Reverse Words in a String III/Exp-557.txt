@@ -1,0 +1,16 @@
+LeetCode 557 - Reverse Words in a String III
+
+Approach:
+
+Split the input string s into individual words using whitespace (" ") as the delimiter.
+Iterate through the array of words and reverse each word individually using StringBuilder.reverse().
+Reconstruct the sentence by appending reversed words separated by single spaces using a StringBuilder.
+Return the final joined string.
+
+Complexity:
+
+Time: O(n) where n is the length of string s, splitting, reversing each word, and joining them back.
+Space: O(n) auxiliary space to store the split word array and output string buffer.
+
+Key Takeaway:
+Splitting the sentence by spaces allows reversing each word's characters independently while preserving original word ordering and spacing.
