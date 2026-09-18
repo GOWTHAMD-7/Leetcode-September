@@ -1,0 +1,20 @@
+LeetCode 890 - Find and Replace Pattern
+
+Approach:
+
+Normalize the pattern pat into a canonical integer sequence:
+- Map each unique character to an incrementing integer ID based on its order of appearance.
+- Replace characters with their assigned integer IDs in a list lst.
+For each candidate string in word:
+- Compute its own canonical integer sequence in using the same appearance-order mapping logic.
+- Compare in with lst: if both sequences match identically at all positions, the word satisfies the bijective mapping to the pattern.
+- If they match, add the word to the result list.
+Return the collected list of matching words.
+
+Complexity:
+
+Time: O(N * K) where N is word.length and K is the length of each word/pattern.
+Space: O(K) auxiliary space per word to store character-to-ID mappings and normalized sequence representations.
+
+Key Takeaway:
+Converting strings into canonical numerical IDs based on first-seen character order reduces isomorphism checking to a simple list equality comparison.

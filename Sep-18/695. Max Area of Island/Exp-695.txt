@@ -1,0 +1,18 @@
+LeetCode 695 - Max Area of Island
+
+Approach:
+
+Traverse every cell (i, j) of the grid while maintaining a visited array vis of size m x n.
+Whenever an unvisited land cell (grid[i][j] == 1 && vis[i][j] == 0) is encountered, initiate a DFS search:
+- Mark the current cell as visited (vis[i][j] = 1) and set base area sum = 1.
+- Recursively explore all 4 adjacent directions (up, down, left, right) if the adjacent cell is inside grid boundaries, is land (grid == 1), and is not yet visited.
+- Accumulate return areas from all valid neighboring recursive DFS calls.
+Track the maximum area found across all connected components, returning 0 if no land cells exist.
+
+Complexity:
+
+Time: O(m * n) where m and n are matrix dimensions, visiting each grid cell at most once during the traversal.
+Space: O(m * n) auxiliary space for the visited matrix and recursion call stack depth.
+
+Key Takeaway:
+Standard connected-component discovery using 4-directional DFS calculates the total size of each island in linear time proportional to grid cells.
