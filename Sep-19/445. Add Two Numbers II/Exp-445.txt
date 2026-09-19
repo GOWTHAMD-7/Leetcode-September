@@ -1,0 +1,19 @@
+LeetCode 445 - Add Two Numbers II
+
+Approach:
+
+Traverse both input linked lists to extract node values into StringBuilders num1 and num2.
+Add digits starting from the least significant digit (right-to-left) using two pointers i and j:
+- Accumulate digits and carry: sum = t1 + t2 + carry.
+- Update carry = sum / 10 and append (sum % 10) to ret.
+Append any remaining carry after processing all digits.
+Construct the output linked list by iterating backwards through ret (which stores digits in reverse order), creating and chaining new ListNode instances.
+Return retu.next.
+
+Complexity:
+
+Time: O(m + n) where m and n are the lengths of the linked lists, for digit extraction, addition, and result list construction.
+Space: O(m + n) auxiliary space to buffer digit strings and build the resulting linked list.
+
+Key Takeaway:
+Buffering linked list values into digit strings bypasses the need to mutate or reverse the original linked lists while accurately handling carry propagation.

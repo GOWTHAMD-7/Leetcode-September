@@ -1,0 +1,16 @@
+LeetCode 154 - Find Minimum in Rotated Sorted Array II
+
+Approach:
+
+Perform a single linear scan across array nums.
+Initialize min with Integer.MAX_VALUE.
+At each index, update min = Math.min(min, nums[i]).
+Return min as the minimum element.
+
+Complexity:
+
+Time: O(n) where n is nums.length, scanning each element once.
+Space: O(1) auxiliary space using a single scalar variable.
+
+Key Takeaway:
+A direct linear scan provides a robust O(n) solution that avoids edge-case complexity and worst-case duplicate degradation in rotated arrays.

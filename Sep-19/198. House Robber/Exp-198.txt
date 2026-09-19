@@ -1,0 +1,21 @@
+LeetCode 198 - House Robber
+
+Approach:
+
+Use top-down dynamic programming with memoization:
+- From house i, adjacent house i + 1 cannot be robbed, meaning the next valid rob choices are house i + 2 or house i + 3.
+- Define recursive function bt(nums, i, max) to return the maximum money robbed starting from house i.
+- Memoize results in an array max initialized with -1 to prevent redundant subproblem evaluations.
+- State transition:
+  one = nums[i] + (loot from i + 2)
+  two = nums[i] + (loot from i + 3)
+  max[i] = Math.max(one, two)
+Compare starting at house 0 versus starting at house 1 and return Math.max(bt(nums, 0), bt(nums, 1)).
+
+Complexity:
+
+Time: O(n) where n is nums.length, as each house state is calculated at most once and cached.
+Space: O(n) auxiliary space for the memoization table and recursion call stack.
+
+Key Takeaway:
+Top-down memoization caches optimal loot from each house index, pruning exponential decision trees to linear time.
