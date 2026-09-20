@@ -1,0 +1,22 @@
+LeetCode 97 - Interleaving String
+
+Approach:
+
+Check prerequisite: length of s1 + length of s2 must equal length of s3, otherwise return false.
+Handle base cases where s1 or s2 is empty by direct equality check against s3.
+Use top-down dynamic programming with a 2D memoization table arr[len1 + 1][len2 + 1]:
+- State is tracked by indices (i, j, k) where k = i + j.
+- If both i reaches len1 and j reaches len2, all characters of s3 are successfully formed; return true.
+- If both s1[i] and s2[j] match s3[k], branch into both choices and memoize results (3 for true, 2 for false).
+- If only s1[i] matches, proceed to (i + 1, j, k + 1).
+- If only s2[j] matches, proceed to (i, j + 1, k + 1).
+- If neither matches, return false.
+Return whether the initial state (0, 0, 0) can construct s3.
+
+Complexity:
+
+Time: O(len1 * len2) as each subproblem (i, j) is evaluated at most once and cached.
+Space: O(len1 * len2) for the 2D memoization array and recursion call stack.
+
+Key Takeaway:
+Memoizing matched prefix states (i, j) across s1 and s2 prunes exponential recursion to polynomial time.

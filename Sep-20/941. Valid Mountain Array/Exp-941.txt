@@ -1,0 +1,22 @@
+LeetCode 941 - Valid Mountain Array
+
+Approach:
+
+Validate minimum length: a mountain must have at least 3 elements (len >= 3).
+Use a state variable change to track slope progression:
+- 0: initial state.
+- 1: strictly increasing ascent.
+- 2: strictly decreasing descent.
+Iterate through the array from index 1:
+- Adjacent equal values (arr[i] == prev) violate strict monotonicity; return false.
+- If decreasing (arr[i] < prev): descent is invalid if no ascent occurred yet (change == 0). Otherwise transition to change = 2.
+- If increasing (arr[i] > prev): ascent is invalid if descent has already started (change == 2). Otherwise transition to change = 1.
+After the loop, verify change == 2 (guaranteeing both an ascent and descent occurred).
+
+Complexity:
+
+Time: O(n) where n is arr.length, performing a single pass over the array.
+Space: O(1) auxiliary space using scalar state variables.
+
+Key Takeaway:
+Tracking state transitions (ascent -> peak -> descent) cleanly verifies strict mountain array conditions in linear time without extra memory.

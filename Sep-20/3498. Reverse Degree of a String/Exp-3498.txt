@@ -1,0 +1,18 @@
+LeetCode 3498 - Reverse Degree of a String
+
+Approach:
+
+Iterate through the string s with 1-based character position (i + 1).
+Calculate the reverse alphabetical weight for each character:
+- 'z' has weight 1, 'y' has weight 2, ..., 'a' has weight 26.
+- Expressed as: (26 - (s.charAt(i) - 'a')).
+Multiply each character's reverse weight by its 1-based index (i + 1) and accumulate the product into sum.
+Return the total sum.
+
+Complexity:
+
+Time: O(n) where n is the length of string s, requiring a single linear pass.
+Space: O(1) auxiliary space using a single accumulator variable.
+
+Key Takeaway:
+Mapping character weights to reverse alphabetical order and weighting by position evaluates the required degree metric in O(n) time.
