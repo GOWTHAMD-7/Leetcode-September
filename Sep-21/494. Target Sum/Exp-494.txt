@@ -1,0 +1,19 @@
+LeetCode 494 - Target Sum
+
+Approach:
+
+Use recursive depth-first search (DFS) / backtracking to explore all 2^n sign assignment choices.
+Track the current index pos and accumulated sum.
+At each index pos:
+- Branch 1: add nums[pos] to sum and recurse to pos + 1.
+- Branch 2: subtract nums[pos] from sum and recurse to pos + 1.
+Base case: when pos == nums.length, increment the counter ret if sum == tar.
+Return the final count ret.
+
+Complexity:
+
+Time: O(2^n) where n is nums.length, exploring two recursive choices for every element.
+Space: O(n) call stack depth proportional to the number of elements.
+
+Key Takeaway:
+Exhaustive binary branching (+ and -) naturally evaluates all possible arithmetic expression combinations over the array elements.

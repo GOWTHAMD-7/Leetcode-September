@@ -1,0 +1,17 @@
+LeetCode 1002 - Find Common Characters
+
+Approach:
+
+Construct a 2D frequency array arr of dimensions words.length x 26 to count character occurrences in each word.
+For each letter from 'a' to 'z' (0 to 25):
+- Determine the minimum frequency of that letter across all words (min over arr[j][i]).
+- If this minimum frequency is greater than 0, append the character that many times to the result list.
+Return the accumulated common characters list ret.
+
+Complexity:
+
+Time: O(N * L + 26 * N) where N is words.length and L is the average string length.
+Space: O(N * 26) auxiliary space for the frequency matrix.
+
+Key Takeaway:
+A character is universally common across an array of words with multiplicity equal to the minimum of its counts across all words.
