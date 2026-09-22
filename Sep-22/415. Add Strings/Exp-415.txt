@@ -1,0 +1,19 @@
+LeetCode 415 - Add Strings
+
+Approach:
+
+Traverse both numeric strings from right to left using two pointers i and j.
+At each position:
+- Extract digits x and y (defaulting to 0 when an index goes out of bounds).
+- Compute sum t = x + y + carry.
+- Append digit (t % 10) to StringBuilder sb and update carry = t / 10.
+After the loop, append any remaining carry if non-zero.
+Reverse the StringBuilder to restore most-significant-first order and return the string.
+
+Complexity:
+
+Time: O(max(len1, len2)) where len1 and len2 are string lengths, processing each digit once.
+Space: O(max(len1, len2)) to store the output string in StringBuilder.
+
+Key Takeaway:
+Simulating manual addition from right to left with carry propagation handles arbitrary-length numeric strings without integer overflow.

@@ -1,0 +1,17 @@
+LeetCode 852 - Peak Index in a Mountain Array
+
+Approach:
+
+In a mountain array, values strictly increase to a unique peak before strictly decreasing.
+Scan through the array starting from index 1:
+- The first index i where arr[i - 1] > arr[i] marks the end of the ascent and the peak position at i - 1.
+- Return i - 1 immediately upon detecting the drop.
+If no drop is encountered before the end, return len - 1.
+
+Complexity:
+
+Time: O(n) where n is arr.length, terminating at the peak.
+Space: O(1) auxiliary space using constant extra memory.
+
+Key Takeaway:
+In a valid mountain array, the peak index is the first element strictly greater than its following element.
