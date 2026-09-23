@@ -1,0 +1,18 @@
+LeetCode 3159 - Find Occurrences of an Element in an Array
+
+Approach:
+
+Traverse nums and record the 0-based index of every occurrence of target value x into a list lst.
+For each query q[i]:
+- q[i] represents the 1-based occurrence number requested.
+- If q[i] <= lst.size(), the answer is lst.get(q[i] - 1).
+- Otherwise, x does not occur that many times, so record -1.
+Return the resulting query answers array ret.
+
+Complexity:
+
+Time: O(n + q) where n is nums.length and q is queries length, with O(1) lookup per query after linear preprocessing.
+Space: O(k) where k is the number of occurrences of x stored in lst.
+
+Key Takeaway:
+Collecting target indices in a list enables constant-time resolution of k-th occurrence queries.

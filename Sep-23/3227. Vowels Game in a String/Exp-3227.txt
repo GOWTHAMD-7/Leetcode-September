@@ -1,0 +1,18 @@
+LeetCode 3227 - Vowels Game in a String
+
+Approach:
+
+Analyze game parity rules:
+- Alice wins if she can remove a substring with an odd number of vowels.
+- If the string contains 0 vowels, Alice has no valid opening move and loses immediately (return false).
+- If the string contains an odd number of vowels, Alice removes the whole string on turn 1 and wins immediately.
+- If the string contains an even number (> 0) of vowels, Alice removes all vowels except 1, leaving Bob with exactly 1 vowel. Bob cannot remove a substring with an even number (> 0) of vowels, giving Alice the victory.
+Hence, Alice wins if and only if there is at least one vowel ('a', 'e', 'i', 'o', 'u') present in s.
+
+Complexity:
+
+Time: O(n) where n is s.length(), scanning until the first vowel is encountered.
+Space: O(1) auxiliary space.
+
+Key Takeaway:
+Game theory parity reduction shows Alice is guaranteed to win if at least one vowel exists in the string.

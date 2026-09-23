@@ -1,0 +1,18 @@
+LeetCode 3228 - Maximum Number of Operations to Move Ones to the End
+
+Approach:
+
+Traverse string s from left to right tracking the running count of 1s (cnt).
+Each contiguous block of 0s allows shifting all preceding 1s across it.
+When encountering a '0':
+- If cnt != prev (marking the start of a new contiguous zero segment), add cnt to total operations ret.
+- Update prev = cnt to avoid recounting operations for consecutive zeros in the same block.
+Return total operations ret.
+
+Complexity:
+
+Time: O(n) where n is the length of string s, requiring a single linear pass.
+Space: O(1) auxiliary space using scalar tracking variables.
+
+Key Takeaway:
+Every contiguous block of zeros acts as a jump boundary, allowing all accumulated preceding 1s to be shifted over it in one operation per '1'.
