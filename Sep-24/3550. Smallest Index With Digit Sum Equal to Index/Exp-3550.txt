@@ -1,0 +1,18 @@
+LeetCode 3550 - Smallest Index With Digit Sum Equal to Index
+
+Approach:
+
+Traverse nums linearly from index 0 to len - 1.
+For each element nums[i]:
+- Compute the sum of its decimal digits by repeatedly isolating t % 10 and dividing t /= 10.
+- Compare the computed digit sum against the current index i.
+- Return the first index i that satisfies i == sum (guaranteeing the smallest valid index).
+If no element satisfies the condition, return -1.
+
+Complexity:
+
+Time: O(n * log10(M)) where n is nums.length and M is the maximum value in nums.
+Space: O(1) auxiliary space using scalar accumulator variables.
+
+Key Takeaway:
+Linear scanning from 0 to n - 1 guarantees that the first matching index found is the minimal one without requiring full array processing.

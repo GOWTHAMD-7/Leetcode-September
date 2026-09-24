@@ -1,0 +1,21 @@
+LeetCode 3363 - Find the Maximum Number of Fruits Collected
+
+Approach:
+
+Decompose the movement of three children across the n x n grid:
+- Child 1 moves strictly along the main diagonal from (0, 0) to (n - 1, n - 1), deterministically collecting all cells arr[i][i].
+- The main diagonal partitions the remaining grid into strictly disjoint upper and lower triangular regions:
+  - Child 2 starts at (0, n - 1) and navigates the upper triangle towards (n - 2, n - 1).
+  - Child 3 starts at (n - 1, 0) and navigates the lower triangle towards (n - 1, n - 2).
+Use level-based bounded BFS/DP with reachable column/row bounds (lst) for Child 2 and Child 3:
+- Update max fruits collected at each reached cell vis[i][j].
+- Prune paths crossing into the diagonal or falling outside reachable boundary limits.
+Sum the diagonal fruits from Child 1 with the independent optimal results of Child 2 and Child 3.
+
+Complexity:
+
+Time: O(n^2) where n is the grid size, processing valid cells in each triangular half level-by-level.
+Space: O(n^2) auxiliary space for visited score matrices and queue state buffers.
+
+Key Takeaway:
+Diagonal separation guarantees non-interfering regions, allowing independent optimization of upper and lower triangular paths in polynomial time.
