@@ -1,0 +1,18 @@
+LeetCode 3044 - Most Frequent Prime
+
+Approach:
+
+For every starting cell (i, j) in mat, trace rays in all 8 cardinal and diagonal directions (N, S, E, W, NE, NW, SE, SW):
+- Sequentially append digits along the ray: sum = sum * 10 + mat[row][col].
+- If sum > 10, test whether it is prime using helper method isPrime.
+- If prime, increment its frequency in a HashMap map.
+- Dynamically track the prime with maximum frequency, breaking frequency ties by choosing the larger prime value.
+Return the most frequent prime, or -1 if no primes > 10 were formed.
+
+Complexity:
+
+Time: O(m * n * max(m, n) * sqrt(V)) where V is the generated integer value (at most 6 digits for small matrix sizes).
+Space: O(U) where U is the number of distinct prime numbers stored in the HashMap.
+
+Key Takeaway:
+Systematic 8-directional ray casting combined with trial division primality tests and frequency tracking reliably finds the most frequent prime.

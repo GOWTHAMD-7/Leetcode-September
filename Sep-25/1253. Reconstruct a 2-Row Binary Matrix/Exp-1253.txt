@@ -1,0 +1,21 @@
+LeetCode 1253 - Reconstruct a 2-Row Binary Matrix
+
+Approach:
+
+Validate feasibility prerequisites:
+- The sum of elements in arr must equal upper + lower.
+- The number of columns with colsum == 2 must not exceed upper or lower, since both rows must allocate a 1 in those columns.
+Allocate mandatory 1s for colsum == 2 in both rows, decrementing upper and lower accordingly.
+Iterate through arr:
+- If arr[i] == 0: assign [0, 0].
+- If arr[i] == 2: assign [1, 1].
+- If arr[i] == 1: greedily assign [1, 0] if upper > 0 (decrementing upper), otherwise assign [0, 1] (decrementing lower).
+Return the two constructed binary rows.
+
+Complexity:
+
+Time: O(n) where n is arr.length, making one validation pass and one reconstruction pass.
+Space: O(n) to store the output 2 x n matrix.
+
+Key Takeaway:
+Satisfying mandatory column constraints (colsum = 2 and 0) first allows greedily distributing remaining 1s between the two rows in linear time.

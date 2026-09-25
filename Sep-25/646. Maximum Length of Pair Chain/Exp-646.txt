@@ -1,0 +1,18 @@
+LeetCode 646 - Maximum Length of Pair Chain
+
+Approach:
+
+Apply greedy interval scheduling:
+- Sort the pair intervals in ascending order by their end times: a[1] - b[1].
+- Maintain max (the right endpoint of the last chosen pair in the chain) and cnt (chain length).
+- Iterate through the sorted pairs:
+  - If the start of the current pair arr[i][0] is strictly greater than max, extend the chain: increment cnt and update max = arr[i][1].
+Return cnt as the maximum length of the pair chain.
+
+Complexity:
+
+Time: O(n log n) where n is arr.length, dominated by the sorting step.
+Space: O(1) auxiliary space beyond the sorting space.
+
+Key Takeaway:
+Sorting intervals by end time and greedily choosing non-overlapping pairs maximizes the total number of chained intervals.

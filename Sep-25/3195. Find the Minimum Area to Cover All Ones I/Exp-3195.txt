@@ -1,0 +1,22 @@
+LeetCode 3195 - Find the Minimum Area to Cover All Ones I
+
+Approach:
+
+Find the extreme bounding coordinates containing all 1s in grid:
+- top: minimum row index with a 1.
+- bot: maximum row index with a 1.
+- lef: minimum column index with a 1.
+- rig: maximum column index with a 1.
+Traverse every cell (i, j) in the grid and update these four boundary markers whenever grid[i][j] == 1.
+Calculate the enclosing rectangle dimensions:
+  height = (bot - top) + 1
+  width = (rig - lef) + 1
+Return the bounding box area (height * width).
+
+Complexity:
+
+Time: O(m * n) where m and n are grid dimensions, scanning all cells once.
+Space: O(1) auxiliary space using four coordinate variables.
+
+Key Takeaway:
+Tracking min/max row and column coordinates of 1s directly defines the minimal axis-aligned bounding rectangle in linear time.

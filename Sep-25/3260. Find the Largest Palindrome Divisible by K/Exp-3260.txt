@@ -1,0 +1,21 @@
+LeetCode 3260 - Find the Largest Palindrome Divisible by K
+
+Approach:
+
+Construct the largest palindrome string of length n divisible by k using divisibility properties:
+- k = 1, 3, 9: Fill entirely with '9's, since all-nines palindromes have digit sums divisible by 3 and 9.
+- k = 2: Boundary digits must be even; set start and end to '8', filling interior with '9's.
+- k = 4: Last two digits must be divisible by 4; use '88' on both boundaries, padded with '9's.
+- k = 5: Boundary digits must be 5; set start and end to '5', filling interior with '9's.
+- k = 6: Must be divisible by 2 and 3; ends with 8, with middle digits adjusted to 77 (for even n) or 8 (for odd n) to make digit sum divisible by 3.
+- k = 7: Exploits the period-6 cyclic remainder property under modulo 7 to determine the required central digit(s) while keeping remaining digits as '9'.
+- k = 8: Last three digits must be divisible by 8; use '888' on both ends with interior '9's.
+Return the constructed palindrome string.
+
+Complexity:
+
+Time: O(n) to construct the n-character string using StringBuilder.
+Space: O(n) auxiliary space to build and return the result string.
+
+Key Takeaway:
+Mathematical divisibility rules coupled with symmetry allow direct constructive derivation of the largest valid palindrome in O(n) time.
