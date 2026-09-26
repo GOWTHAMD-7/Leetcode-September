@@ -1,0 +1,19 @@
+LeetCode 3913 - Sort Vowels by Frequency
+
+Approach:
+
+Count frequencies of all vowels ('a', 'e', 'i', 'o', 'u') using a HashMap and keep unique vowels in a LinkedHashSet.
+Sort vowels in descending order of their frequency:
+- Repeatedly select the vowel with maximum frequency from the set, append all its occurrences to a list lst, and remove it from the set.
+Iterate through the characters of s:
+- Whenever a vowel is encountered, replace it with the next vowel from lst in frequency order.
+- Consonants remain in their original positions.
+Return the reconstructed string.
+
+Complexity:
+
+Time: O(n) where n is s.length(), scanning vowels in linear time and sorting at most 5 vowel types in O(1).
+Space: O(n) auxiliary space to store the vowel list and output character array.
+
+Key Takeaway:
+Isolating and sorting only the target vowel subset by frequency allows in-place replacement while preserving consonant indices.

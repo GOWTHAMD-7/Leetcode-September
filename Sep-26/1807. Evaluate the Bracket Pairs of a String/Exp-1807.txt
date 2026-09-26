@@ -1,0 +1,18 @@
+LeetCode 1807 - Evaluate the Bracket Pairs of a String
+
+Approach:
+
+Store all key-value mappings from lst into a HashMap for O(1) lookup.
+Iterate through the string s with a pointer i:
+- If character is '(': scan ahead to collect the bracketed key until reaching ')'.
+- Query the key in the HashMap, appending the mapped value (or "?" if the key is absent) to a StringBuilder sb.
+- If character is outside brackets: directly append to sb.
+Return sb.toString().
+
+Complexity:
+
+Time: O(m + n) where m is the total length of key-value pairs in lst and n is the length of string s.
+Space: O(m + n) auxiliary space to store the key-value dictionary and reconstructed output string.
+
+Key Takeaway:
+Pre-indexing replacement pairs in a HashMap allows single-pass bracket parsing and substitution in linear time.

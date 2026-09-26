@@ -1,0 +1,19 @@
+LeetCode 3997 - Count Dominant Nodes in a Binary Tree
+
+Approach:
+
+A node is dominant if its value is greater than or equal to the maximum node value in its entire subtree.
+Perform a bottom-up post-order traversal using recursive helper max(root):
+- For leaf nodes: no descendants exist, so every leaf is dominant; increment ret and return root.val.
+- For internal nodes: recursively calculate the maximum values l and r from left and right subtrees.
+- If root.val >= Math.max(l, r), mark the node as dominant by incrementing ret and return root.val.
+- Otherwise, return Math.max(l, r) to upper recursive levels.
+Return ret containing the total count of dominant nodes.
+
+Complexity:
+
+Time: O(n) where n is the number of nodes in the binary tree, visiting each node exactly once.
+Space: O(h) where h is the tree height, for the recursive call stack.
+
+Key Takeaway:
+Post-order bottom-up traversal enables determining whether each node dominates its subtree in O(1) time per node without redundant traversals.
