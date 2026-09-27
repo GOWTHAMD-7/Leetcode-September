@@ -1,0 +1,20 @@
+LeetCode 4066 - Maximum Equal Adjacent Pairs After at Most One Replacement
+
+Approach:
+
+Traverse adjacent pairs in nums:
+- If nums[i] == nums[i + 1], increment baseline count ret.
+- For distinct adjacent pairs, store a normalized key "min-max" in a HashMap and track the pair pos with the highest frequency.
+If no unequal adjacent pairs exist, return ret directly.
+Extract the two values f and ff from the most frequent pair:
+- Simulate replacing all occurrences of f with ff across nums and count resulting adjacent equal pairs (ret1).
+- Simulate replacing all occurrences of ff with f across nums and count resulting adjacent equal pairs (ret2).
+Return the maximum of ret1 and ret2.
+
+Complexity:
+
+Time: O(n) where n is nums.length, requiring linear scans for frequency counting and candidate evaluation.
+Space: O(n) auxiliary space to store adjacent distinct pairs in the HashMap.
+
+Key Takeaway:
+Normalizing distinct adjacent pairs into canonical keys identifies the most frequent adjacent transition to target for value replacement.

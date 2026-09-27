@@ -1,0 +1,19 @@
+LeetCode 4065 - Rearrange Array by Removing Distinct Values
+
+Approach:
+
+Count occurrences of each unique element in nums using a HashMap.
+While the map is not empty, extract rounds of distinct elements:
+- In each round, collect all active keys into a TreeSet to order them in ascending order.
+- Decrement each element's frequency, marking exhausted keys (count == 1) in a removal set remo.
+- Place the sorted distinct elements into the output array ret.
+- Evict all exhausted keys in remo from the HashMap.
+Continue until all elements have been arranged into ret.
+
+Complexity:
+
+Time: O(R * U log U) where U is the number of distinct values and R is the maximum frequency of any element in nums.
+Space: O(U) auxiliary space to maintain the frequency map and round TreeSets.
+
+Key Takeaway:
+Iteratively peeling off one copy of each unique element in sorted order via TreeSet organizes the multiset elements into sorted distinct rounds.
