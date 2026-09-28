@@ -1,0 +1,17 @@
+LeetCode 1614 - Maximum Nesting Depth of the Parentheses
+
+Approach:
+
+Track the current nesting depth with a counter cnt, initialized to 0.
+Traverse string s character by character:
+- When '(' is encountered: increment cnt and update max = Math.max(max, cnt).
+- When ')' is encountered: decrement cnt.
+Return max.
+
+Complexity:
+
+Time: O(n) where n is the length of string s, scanning each character once.
+Space: O(1) auxiliary space using scalar tracking variables.
+
+Key Takeaway:
+A single running counter tracks the opening and closing of parentheses, capturing the maximum nesting depth in linear time.

@@ -1,0 +1,18 @@
+LeetCode 116 - Populating Next Right Pointers in Each Node
+
+Approach:
+
+Perform level-order traversal (BFS) using a Queue to link nodes horizontally.
+For each level of width len:
+- Dequeue the first node out and enqueue its children.
+- For the remaining len - 1 nodes in the level, poll node t, set out.next = t, update out = t, and enqueue t's children.
+- The last node in each level automatically retains next = null.
+Return root.
+
+Complexity:
+
+Time: O(n) where n is the number of nodes in the tree, visiting each node once.
+Space: O(w) where w is the maximum width of the binary tree (up to n / 2 for leaves).
+
+Key Takeaway:
+Batching nodes by level using BFS queue size makes linking adjacent nodes horizontally straightforward.

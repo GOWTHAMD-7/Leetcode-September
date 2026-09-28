@@ -1,0 +1,18 @@
+LeetCode 117 - Populating Next Right Pointers in Each Node II
+
+Approach:
+
+Apply level-order BFS traversal to handle arbitrary (non-perfect) binary trees.
+At each level with size len:
+- Dequeue the first node out and add its non-null children independently.
+- For each subsequent node t in the same level, wire out.next = t, update out = t, and add t's non-null children to the queue.
+- The rightmost node of each level naturally points to null.
+Return root.
+
+Complexity:
+
+Time: O(n) where n is the number of nodes in the binary tree.
+Space: O(w) where w is the maximum level width, for storing nodes in the BFS queue.
+
+Key Takeaway:
+Independent child null-checks allow level-order BFS to populate next pointers across irregular and incomplete tree levels seamlessly.
