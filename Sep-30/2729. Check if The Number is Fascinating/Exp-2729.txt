@@ -1,0 +1,20 @@
+LeetCode 2729 - Check if The Number is Fascinating
+
+Approach:
+
+1. A fascinating number is formed by concatenating n, 2*n, and 3*n, and must contain all digits from 1 to 9 exactly once without containing any 0s.
+2. If n > 333, 3*n has 4 digits, making the total number of digits at least 3 + 3 + 4 = 10 digits, which cannot be a permutation of 1 to 9. Hence, immediately return false if n > 333.
+3. Use a HashSet to track seen digits across n, 2*n, and 3*n:
+   - For each number (n, 2*n, 3*n), extract each digit using modulo 10:
+     - If any digit is 0, return false.
+     - If the digit is already present in the set, return false (duplicate digit).
+     - Otherwise, add the digit to the set.
+4. If all digits are processed without encountering 0 or duplicates, return true.
+
+Complexity:
+
+Time: O(1) as the number of digits across n, 2*n, and 3*n is at most 9.
+Space: O(1) auxiliary space storing at most 9 digits in the HashSet.
+
+Key Takeaway:
+Bounds check n <= 333 ensures concatenated length cannot exceed 9 digits, and a hash set readily verifies that each digit from 1 to 9 appears exactly once without zeros.

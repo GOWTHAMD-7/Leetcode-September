@@ -1,0 +1,21 @@
+LeetCode 3584 - Maximum Product of First and Last Elements of a Subsequence
+
+Approach:
+
+1. A subsequence of size at least m starting at index i must end at some index j >= i + m - 1.
+2. For each element nums[i] chosen as the first element of the subsequence:
+   - To maximize the product nums[i] * nums[j], we need either the maximum value in nums[i + m - 1 ... len - 1] (if nums[i] >= 0 or max product is positive) or the minimum value (if nums[i] < 0 and min value is negative).
+3. Precompute suffix maximums into arr1 and suffix minimums into arr2 by traversing from right to left.
+4. Decrement m (m--) so that (i + m) corresponds to the minimum ending index (i + m - 1).
+5. Loop through all valid starting positions i from 0 to len - m - 1:
+   - Compute candidate products nums[i] * arr1[i + m] and nums[i] * arr2[i + m].
+   - Maintain and update the maximum product ret.
+6. Return ret.
+
+Complexity:
+
+Time: O(n) where n is the length of nums, performing two linear scans.
+Space: O(n) auxiliary space to store suffix maximum and minimum arrays.
+
+Key Takeaway:
+Precomputing suffix maximums and minimums allows querying the extreme values for any valid ending range in O(1) time per starting element.

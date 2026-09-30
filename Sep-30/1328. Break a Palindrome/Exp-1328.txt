@@ -1,0 +1,21 @@
+LeetCode 1328 - Break a Palindrome
+
+Approach:
+
+1. If the length of the string is 1, it is impossible to break the palindrome without making it empty or length 1 (which remains a palindrome), so return "".
+2. To obtain the lexicographically smallest non-palindrome, greedily replace the first non-'a' character in the first half of the string with 'a'.
+3. Scan through the string and track:
+   - The first non-'a' index (check) and second non-'a' index (check2).
+   - The last position (pos) to modify if all candidates are 'a'.
+4. If a non-'a' character is found:
+   - If it is at len / 2 (the exact center character of an odd-length palindrome), changing it would keep the string a palindrome. Thus, look for check2 to change to 'a', or change the last character to 'b'.
+   - Otherwise, change the first non-'a' character (check) to 'a'.
+5. If the string consists entirely of 'a's (or only center non-'a'), change the last character to 'b' to achieve the smallest break.
+
+Complexity:
+
+Time: O(n) where n is the length of string s, scanning through the characters once.
+Space: O(n) space to construct the resulting string using StringBuilder.
+
+Key Takeaway:
+To minimize lexicographical order, greedily change the first non-'a' character before the middle index to 'a'; if none exists, change the very last character to 'b'.
