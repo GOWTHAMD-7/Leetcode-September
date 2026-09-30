@@ -1,0 +1,22 @@
+LeetCode 1616 - Split Two Strings to Make Palindrome
+
+Approach:
+
+1. Check if string a or string b is already a palindrome by itself. If so, return true.
+2. Consider splitting a_prefix + b_suffix:
+   - Use two pointers i = 0, j = len - 1. While a[i] == b[j], advance inward (i++, j--).
+   - Upon the first mismatch at index pair (i, j):
+     - The split can still form a palindrome if the remaining middle part of either string is a palindrome: check isPal(a, i, j) or isPal(b, i, j).
+     - If neither is palindromic, this split direction cannot form a palindrome.
+3. Symmetrically check the alternative configuration b_prefix + a_suffix:
+   - Compare b[i] and a[j] inward.
+   - Upon mismatch, check if inner substring a[i...j] or b[i...j] is a palindrome.
+4. If either direction succeeds, return true; otherwise, return false.
+
+Complexity:
+
+Time: O(n) where n is the length of strings a and b. Two-pointer matching runs in linear time, and the inner palindrome check runs at most once in O(n).
+Space: O(1) auxiliary space, operating directly on indices without extra memory allocations.
+
+Key Takeaway:
+Matching from outer ends inward greedily consumes matching characters; once a mismatch occurs, the validity strictly reduces to checking whether the remaining inner substring is a palindrome.

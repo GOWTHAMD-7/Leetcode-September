@@ -1,0 +1,25 @@
+LeetCode 1106 - Parsing A Boolean Expression
+
+Approach:
+
+1. Use a character stack st to evaluate subexpressions from inside out.
+2. Traverse the boolean expression string s:
+   - Ignore commas (',') as they are just delimiters.
+   - If the character is not ')', push it onto the stack (this includes 't', 'f', '(', '&', '|', '!').
+   - When ')' is encountered:
+     - Pop all characters until '(' is reached, counting the occurrences of true ('t') and false ('f').
+     - Pop the '(' delimiter.
+     - Pop the operator preceding '(':
+       - For '&': evaluates to 't' only if false count == 0; otherwise 'f'.
+       - For '|': evaluates to 't' if true count > 0; otherwise 'f'.
+       - For '!': negates the single operand inside ('t' -> 'f', 'f' -> 't').
+     - Push the evaluated boolean result character back onto the stack.
+3. At the end, the stack contains a single boolean character; return true if 't', false if 'f'.
+
+Complexity:
+
+Time: O(n) where n is the length of string s, because each character is pushed and popped at most a constant number of times.
+Space: O(n) auxiliary space for the stack storing characters of the expression.
+
+Key Takeaway:
+Using a stack to evaluate expressions upon closing parentheses enables clean, innermost-first evaluation of nested prefix boolean operations.

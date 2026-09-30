@@ -1,0 +1,20 @@
+LeetCode 1016 - Binary String With Substrings Representing 1 To N
+
+Approach:
+
+1. Any integer in the range [1, n] can have at most ~30 bits because n <= 10^9 < 2^30.
+2. Generate all unique integer values represented by binary substrings of s:
+   - For every starting index i from 0 to len - 1:
+     - For ending index j from i + 1 up to len, limiting window length (j - i) <= 30.
+     - Parse substring s.substring(i, j) as a base-2 integer and insert it into a HashSet.
+3. Iterate through all integers from 1 to n:
+   - If any integer is missing from the HashSet, return false.
+4. If all integers from 1 to n are found in the set, return true.
+
+Complexity:
+
+Time: O(|s| * min(|s|, 30) + n) where |s| is the length of string s. Substring extraction and parsing takes at most 30 steps per start index.
+Space: O(|s| * min(|s|, 30)) to store unique integer values in the HashSet.
+
+Key Takeaway:
+Restricting the substring window to 30 bits prevents 32-bit integer overflow and allows precomputing all possible decimal values in linear time relative to |s|.

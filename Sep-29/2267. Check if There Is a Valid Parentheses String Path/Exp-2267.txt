@@ -1,0 +1,21 @@
+LeetCode 2267 - Check if There Is a Valid Parentheses String Path
+
+Approach:
+
+1. Check path length parity: A valid path from (0, 0) to (m-1, n-1) takes (m + n - 1) steps. A valid parentheses string must have an even length, so if (m + n - 1) is odd, i.e., (m + n) % 2 == 0, return false immediately.
+2. Use depth-first search (DFS) with 3D memoization dp[i][j][st], where:
+   - i, j are the current coordinates on the grid.
+   - st represents the running balance of open parentheses '(' minus closed parentheses ')'.
+3. At cell (i, j):
+   - Update balance: if grid[i][j] == '(', increment st. If ')', decrement st (if st == 0 already, path becomes invalid, return false).
+   - If reached bottom-right cell (m-1, n-1): it must balance to 0, which means prior to the final cell, st must be 1 and grid[m-1][n-1] must be ')'.
+   - Check memoized state: if dp[i][j][st] != 0, return true if 2, false if 1.
+4. Recurse down (i+1, j) and right (i, j+1), caching the boolean outcome into dp[i][j][st].
+
+Complexity:
+
+Time: O(m * n * (m + n)) since each state (i, j, st) is visited at most once, and st is bounded by (m + n).
+Space: O(m * n * (m + n)) for the 3D DP memoization table and recursion stack.
+
+Key Takeaway:
+Tracking the parentheses balance along grid paths allows pruning invalid balances immediately (st < 0) and memoizing over (row, col, balance) to solve the path validation in polynomial time.
